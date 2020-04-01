@@ -75,17 +75,35 @@ During your project review, be prepared to:
 
 In particular, the JavaScript Fundamentals concepts your reviewer may ask about include:
 
-- variables
-- data structures
-- functions
-- hoisting
-- scope
-- context
-- `this`
-- closures
-- ES6 syntax
-- `let`, `const`
-- arrow functions
+#### variables
+
+#### data structures
+
+#### functions
+
+#### hoisting
+
+Function declarations and variable declarations are hoisted in JS. Meaning the declarations act as though they were moved to the top of the JS file (above the call/invocations) because the JS Engine has a two-phase nature.
+
+During the first phase, the compilation phase, JS only focuses on function and variable declarations when it reads through JS code from top to bottom. By the time JS has reached phase two, the execution phase where it will focus on the invocation or calls of functions and variables, these functions and variables have already been created in memory.
+
+While hoisting allows access to functions and variable before they are declared, there are a few caveats:
+1. Not all functions are hoisted, only regular function declarations
+2. Variables definitions are hoisted, not variable values. 
+
+#### scope
+
+#### context
+
+#### `this`
+
+#### closures
+
+#### ES6 syntax
+
+#### `let`, `const`
+
+#### arrow functions
 
 ### Learning Goals
 
