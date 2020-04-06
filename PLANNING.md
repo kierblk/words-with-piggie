@@ -19,6 +19,7 @@ Current learning tools for toddlers do not allow for enough customization to tar
 ## User Stories
 
 - A user can see a single card, randomly picked from a category.
+- Cards are organized into categories such as colors, numbers, family members, food, etc.
 - User sees both a picture and text prompt on the card.
 - A user can mark each card as successful or unsuccessful.
 - A user is able to see a summary of performance (number of correct and incorrect cards) each session.
