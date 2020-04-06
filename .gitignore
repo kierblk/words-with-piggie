@@ -9,7 +9,9 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/backend/log/*
 /tmp/*
+/backend/tmp/*
 !/log/.keep
 !/tmp/.keep
 
