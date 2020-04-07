@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", init)
 
 function init(){
-  return console.log("Tea. Earl Grey. Hot.")
+  // console.log("Tea. Earl Grey. Hot.")
+
+  const backendURL = 'localhost:3000'
+
+  fetch(`http://${backendURL}/cards`)
+    .then(response => response.json())
+    .then(data => console.log(data))
 }
