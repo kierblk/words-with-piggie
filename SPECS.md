@@ -95,7 +95,56 @@ While hoisting allows access to functions and variable before they are declared,
 
 #### context
 
+##### Execution Context
+
+When a function in JavaScript ***is called***, it is provided an _execution
+context_.
+
+The _execution context_ is a JavaScript `Object` that is either implicitly or
+explicitly passed at the time of the function's call.
+
+The implicit way of passing a context with a function is something we have to
+memorize and accept as part of the nature of JavaScript.
+
+The tools for explicitly passing a context at function call-time are the
+methods `call`, `apply`, and `bind.`
+
+##### "Non-bare Function Calls
+
+When a function is called, it gets an execution context passed in. That context
+will be whatever the function was 'called on' - the object to the left of the
+`.`  where it's called.
+
+A simple way of saying it: when you call `someObject.someFunction()`, the
+context inside of `someFunction` will be the thing to the left of the `.`:
+`someObject`.
+
+When no object is to the left of the function, JavaScript invisibly adds **the
+global object**. A simple way of saying it: when you call `someFunction()`, the context inside
+of `someFunction` will be the thing to the left of the `.`.  Since there's
+nothing there, JavaScript swaps in the global object.
+
+In browser-based JavaScript environment (or "JavaScript runtime"), the global
+object is called `window`.
+
 #### `this`
+
+The JavaScript keyword `this` returns the current _execution context_ while the
+function is being run.  Whether that context was passed explicitly or
+implicitly, `this` returns it.
+
+1. Execution context is set in a function by invoking `call` on the function
+   and passing, as the first argument, a `thisArg` which is accessed via `this`
+   in the function. Additional parameters to the function are listed after `,`
+2. Execution context is set in a function by invoking `apply` on the function
+   and passing, as first argument, a `thisArg` which is accessed via `this` in
+   the function. Additional parameters to the function are stored in the
+   second argument: an `Array` containing arguments to the function.
+3. Execution context can be locked in a function by invoking `bind` on it and
+   passing it a `thisArg`. The `bind` function makes a copy of the
+   functionality of its function but with all the `this` stuff locked in place
+   and returns that function. That _new_ function can have arguments passed to it
+   during its call with `()` as usual.
 
 #### closures
 
@@ -104,6 +153,28 @@ While hoisting allows access to functions and variable before they are declared,
 #### `let`, `const`
 
 #### arrow functions
+
+The arrow function expression (often simply called an "arrow function") is yet
+another way of writing a function expression. They look different from "old
+style" function expressions, but the ***most important difference*** is that
+the arrow function is ***automatically bound*** to its parent's context and
+does not create a context of its own.
+
+Many programmers think arrow functions are much more predictable since they
+do not create their own `this` during execution and instead "absorb" the
+context of their enclosing environment.
+
+Since _the whole point_ of an arrow function is to ***not have its own
+execution context***, we should not use `call`, `bind`, or `apply` when
+executing them. Most of the time, you'll see them used like anonymous functions
+passed as first-class data into another function.
+
+Because arrow functions are _so often used_ to take a value, do a single
+operation with it, and return the result, they have two shortcuts:
+
+* If you pass only one argument, you don't have to wrap the single parameter in `()`
+* If there is only one expression, you don't need to wrap it in `{}` and the result of that expression is automatically returned.
+* Anti-Shortcut: If you *DO* use `{}`, you must explicitly `return` the return value
 
 ### Learning Goals
 
