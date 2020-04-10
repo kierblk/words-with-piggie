@@ -77,6 +77,39 @@ In particular, the JavaScript Fundamentals concepts your reviewer may ask about 
 
 #### variables
 
+We have, technically, four options for declaration:
+
+1. GLOBAL variables
+      - `nyName = "sara"`
+      - Not ever an option for us to use
+      - implicit declaration, no keyword
+
+2. `var`
+      - `var myName = "Sara"`
+      - Not really an option anymore
+      - does NOT support block scoping
+      - global or function scoped
+      - can be re-declared
+      - can be re-assigned
+      - hoisted
+      - During compilation phase, initalized to `undefined`
+
+3. `let`
+      - `let myName = "Sara"`
+      - can be global, functional, or block scoped
+      - canNOT be re-declared
+      - can be re-assigned
+      - not really hoisted
+      - can be declared with no initializer, but will be given `undefined` during execution not compilation
+
+4. `const`
+      - - `const myName = "Sara"`
+      - can be global, functional, or block scoped
+      - canNOT be re-declared
+      - canNOT be re-assigned
+      - not really hoisted
+      - canNOT be declared with no initializer, must be given one right away
+
 #### data structures
 
 #### functions
@@ -129,52 +162,124 @@ object is called `window`.
 
 #### `this`
 
+**Kinda life `self` in Ruby, but for JS** 
+
 The JavaScript keyword `this` returns the current _execution context_ while the
 function is being run.  Whether that context was passed explicitly or
 implicitly, `this` returns it.
 
-1. Execution context is set in a function by invoking `call` on the function
-   and passing, as the first argument, a `thisArg` which is accessed via `this`
-   in the function. Additional parameters to the function are listed after `,`
-2. Execution context is set in a function by invoking `apply` on the function
-   and passing, as first argument, a `thisArg` which is accessed via `this` in
-   the function. Additional parameters to the function are stored in the
-   second argument: an `Array` containing arguments to the function.
-3. Execution context can be locked in a function by invoking `bind` on it and
-   passing it a `thisArg`. The `bind` function makes a copy of the
-   functionality of its function but with all the `this` stuff locked in place
-   and returns that function. That _new_ function can have arguments passed to it
-   during its call with `()` as usual.
+##### Four ways `this` gets it's value, not including Arrow Functions
+
+1. Function invocation
+      No receiving object: `run()`
+      Non-strict mode: `this` will be the global object
+      Strict-mode: `this` is undefined
+
+2. Method invocation
+      Has a receiving object: `obj.method()`
+      Non-strict mode: `this` will be the receiving `obj`
+      Strict mode: not change, same as non-strict mode
+
+3. Apply, or bind/call/apply invocation
+      Can override `this` in any case!!
+      EX: `run.call(thisArg)`
+      Tells the function or method EXPLICITLY what `this` is
+
+4. Constructor invocation
+      Uses the `new` keyword before invocation
+      EX: `new waffle(waffleInfo)`
+      `this` is the new object that is created
+      Rare case of **implicit** return, the new object is returned as well.
+
+##### Arrow Functions and `this`
+
+      Every function starting with the keyword `function` (expressions or declarations) get two hidden bonus parameters: `this` and `arguments` EXCEPT ARROW FUNCTIONS, THEY GET NEITHER!
+
+      Arrow functions, completely unlike all other functions, have no `this` of their own.
+      Instead, references to `this` will refer to wherever `this` is defined. It takes its parent scope as `this`.
+
+##### Event Listeners and `this`
+
+When adding event listeners, `this` in the callback will be the DOM element the listener was attached to... unless the callback was an arrow function.
 
 #### closures
 
-#### ES6 syntax
+#### ES6 syntax ?
 
-#### `let`, `const`
+##### Template Strings
 
-#### arrow functions
+Back ticks - make special strings that allow interpolatation and formation of HTML templates within.
 
-The arrow function expression (often simply called an "arrow function") is yet
-another way of writing a function expression. They look different from "old
-style" function expressions, but the ***most important difference*** is that
-the arrow function is ***automatically bound*** to its parent's context and
-does not create a context of its own.
+##### Destructuring
 
-Many programmers think arrow functions are much more predictable since they
-do not create their own `this` during execution and instead "absorb" the
-context of their enclosing environment.
+A shorthand way of making variable assignments from information within a plain object or an array.
 
-Since _the whole point_ of an arrow function is to ***not have its own
-execution context***, we should not use `call`, `bind`, or `apply` when
-executing them. Most of the time, you'll see them used like anonymous functions
-passed as first-class data into another function.
+```JS
+      // Objects
+      const myObject = {
+            name: "Sara",
+            favoriteFruit: "Apples"
+      }
 
-Because arrow functions are _so often used_ to take a value, do a single
-operation with it, and return the result, they have two shortcuts:
+      const favoriteFruit = myObject.favoriteFruit
+      const { favoriteFruit } = myObject
 
-* If you pass only one argument, you don't have to wrap the single parameter in `()`
-* If there is only one expression, you don't need to wrap it in `{}` and the result of that expression is automatically returned.
-* Anti-Shortcut: If you *DO* use `{}`, you must explicitly `return` the return value
+      // Arrays
+      const myArray = ["red", "green", "blue"]
+      const ["red", "green", "blue"] = myArray
+
+      // Arguments
+      const greet = ({name, greeting}) => `${greeting}, ${name}!`
+      greet({name: "Sara", greeting: "Hi there"})
+```
+
+##### Default Arguments
+
+```JS
+      function greet(name, greeting = "Hi there"){
+            return `${greeting}, ${name}!`
+      }
+
+      greet("Sara") // "Hi there, Sara!"
+      greet("Sara", "Yo") // "Yo, Sara!"
+```
+
+##### Rest/Spread Operators
+
+**REST**
+
+```JS
+      function greet(greeting, name, ...otherNames){
+            return `${greeting}, ${name} ${otherNames.length >= 1 ? otherNames.join(" ") : ""}!`
+      }
+
+      greet("Hi there", "Sara") // "Hi there, Sara!"
+      greet("Hi there", "Sara", "Brandon", "Anastasia") // "Hi there, Sara Brandon Anastasia!"
+```
+
+**SPREAD**
+Allows us to preserve values from an object or an array, to basically make a copy.
+
+```JS
+      // Objects
+      const myObject = {
+            name: "Sara",
+            favoriteFruit: "Apples"
+      }
+
+      const newObject = {
+            ...myObject,
+            name: "Brandon"
+      }
+
+      //Array
+      const myArray = [1, 2, 3, 5]
+
+      const myArrayCopy = [...myArray]
+      const myArrayPlus7 = [...myArray, 7]
+```
+
+Could also use `object.assign()` to achieve this.. but rest and spread are easier.
 
 ### Learning Goals
 
