@@ -3,7 +3,6 @@
   background: rgb(63,94,251);
   background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
   color: #fff;
-  text-align: center;
 }
 
 .navbar-brand {
@@ -24,6 +23,15 @@
 
 .bg-light-transparent {
   background: rgba(255,255,255,0.6)
+}
+
+img#card-image {
+  width: 50px;
+}
+
+.card-display-ib {
+  display: inline-block !important;
+  margin: 5px;
 }
 
 body {
