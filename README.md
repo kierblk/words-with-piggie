@@ -1,4 +1,4 @@
-# Learning Pigs
+# Words with Pigs
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -23,7 +23,7 @@ Things you may want to cover:
 
 * ...
 
-Heroku: https://learning-pigs.herokuapp.com/
+Heroku: https://words-with-pigs.herokuapp.com/
 
 ## Attributions
 
