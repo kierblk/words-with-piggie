@@ -142,7 +142,7 @@ memorize and accept as part of the nature of JavaScript.
 The tools for explicitly passing a context at function call-time are the
 methods `call`, `apply`, and `bind.`
 
-##### "Non-bare Function Calls
+##### "Non-bare" Function Calls
 
 When a function is called, it gets an execution context passed in. That context
 will be whatever the function was 'called on' - the object to the left of the
@@ -193,10 +193,10 @@ implicitly, `this` returns it.
 
 ##### Arrow Functions and `this`
 
-      Every function starting with the keyword `function` (expressions or declarations) get two hidden bonus parameters: `this` and `arguments` EXCEPT ARROW FUNCTIONS, THEY GET NEITHER!
+Every function starting with the keyword `function` (expressions or declarations) get two hidden bonus parameters: `this` and `arguments` EXCEPT ARROW FUNCTIONS, THEY GET NEITHER!
 
-      Arrow functions, completely unlike all other functions, have no `this` of their own.
-      Instead, references to `this` will refer to wherever `this` is defined. It takes its parent scope as `this`.
+Arrow functions, completely unlike all other functions, have no `this` of their own.
+Instead, references to `this` will refer to wherever `this` is defined. It takes its parent scope as `this`.
 
 ##### Event Listeners and `this`
 
