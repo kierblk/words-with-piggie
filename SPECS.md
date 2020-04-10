@@ -103,7 +103,7 @@ We have, technically, four options for declaration:
       - can be declared with no initializer, but will be given `undefined` during execution not compilation
 
 4. `const`
-      - - `const myName = "Sara"`
+      - `const myName = "Sara"`
       - can be global, functional, or block scoped
       - canNOT be re-declared
       - canNOT be re-assigned
