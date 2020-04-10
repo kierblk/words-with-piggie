@@ -15,12 +15,14 @@ function fetchCards() {
 }
 
 function makeCards(card) {
-
+  console.log("MAKECARDS FN: Captains log...")
+  // Grab main div where cards will be created
   const mainDiv = document.querySelector('.main')
-
+  // Create new div for each card, set class attributes for styling
   const newCardDiv = document.createElement('div')
   newCardDiv.setAttribute('class', 'card text-center card-display-ib')
 
+  // Card inner HTML interpolated with card data
   newCardDiv.innerHTML = `
     <div class="card-body">
       <h5 class="card-title">${card.title}</h5>
@@ -33,9 +35,6 @@ function makeCards(card) {
     <i class="fas fa-edit"></i> <i class="far fa-trash-alt "></i>
     </div>
   `
-
+  // Add new div to main div
   mainDiv.appendChild(newCardDiv)
-
-  console.log(newCardDiv)
-
 }
