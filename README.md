@@ -33,5 +33,10 @@ Heroku: https://words-with-pigs.herokuapp.com/
 
 * Pig Icon Used in Navbar as Brand Icon [pig4.svg]: Icons made by [photo3idea_studio](https://www.flaticon.com/authors/photo3idea-studio) from [www.flaticon.com](https://www.flaticon.com)
 
-* Ball Icon [ball.svg]: Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)
+* Apple Image by <a href="https://pixabay.com/users/Desertrose7-752536/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=634572">Tracy Lundgren</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=634572">Pixabay</a>
 
+* Orange Image by <a href="https://pixabay.com/users/pixel2013-2364555/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1721590">S. Hermann &amp; F. Richter</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1721590">Pixabay</a>
+
+* Yellow Rananculus Flower Image by <a href="https://pixabay.com/users/tayphuong388-13405528/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4989694">tayphuong388</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4989694">Pixabay</a>
+
+* Green Leaf Image by <a href="https://pixabay.com/users/llmicro-50538/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=176722">llmicro</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=176722">Pixabay</a>
