@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearningPigs</title>
-  <link href="https://fonts.googleapis.com/css?family=Comic+Neue|Gochi+Hand&display=swap" rel="stylesheet"> 
+  <title>Words with Pigs</title>
+  <link href="https://fonts.googleapis.com/css?family=Comic+Neue&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Nanum+Pen+Script&display=swap" rel="stylesheet"> 
+
   <link rel="stylesheet" href="src/index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   <script type="text/javascript" src="src/index.js"></script>
   <script src="https://kit.fontawesome.com/9194bdc52d.js" crossorigin="anonymous"></script>
 </head>
@@ -14,7 +17,7 @@
 
   <div class="navbar navbar-expand-lg fixed-top navbar-transparent splash">
     <div class="container">
-        <span class="navbar-brand brand-text"><img src="src/images/pig4.svg">Learning Pigs</span>
+        <span class="navbar-brand brand-text"><img src="src/images/pig4.svg">Words with Pigs</span>
     </div>
   </div>
 
@@ -22,7 +25,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Stuff goes here</h1>
+          <h1 id="header-text" class="header-text">Please select a category to begin!</h1>
         </div>
       </div>
     </div>
@@ -30,14 +33,20 @@
 
   <div class="container bg-light-transparent">
     <div class="row">
-      <div class="col-2">
-        <div id="sidebar" class="sidebar">
-          SIDEBAR
+      <div class="col-3">
+        <div id="sidebar" class="sidebar text-center">
+        </div>
+        <div id="sidebar-form" class="sidebar text-center">
+          <form action="" method="post">
+            <input type="text" class="form-control form-control-lg" id="new-category-name" name="name" placeholder="New Category Title"><br />
+            <input type="submit" class="btn-lg" value="Create Category">
+          </form>
         </div>
       </div>
   
-      <div class="col-10">
+      <div class="col-9">
         <div id="main" class="main">
+          MAIN
         </div>
       </div>
     </div>
