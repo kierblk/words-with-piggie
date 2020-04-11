@@ -23,15 +23,6 @@
   font-size: 3.5rem !important;
 }
 
-img#card-image {
-  width: 350px;
-}
-
-.card-display-ib {
-  display: inline-block !important;
-  margin: 5px;
-}
-
 body {
   background: rgb(63,94,251);
   background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
@@ -42,6 +33,15 @@ body {
   margin: 20px;
   background: rgba(255,255,255,0.6);
   min-height: 80vh;
+}
+
+.object-fit-img {
+  height: 8rem;
+  object-fit: cover;
+}
+
+.card-style {
+  width: 8rem;
 }
 
 html {
