@@ -40,3 +40,9 @@ Heroku: https://words-with-pigs.herokuapp.com/
 * Yellow Rananculus Flower Image by <a href="https://pixabay.com/users/tayphuong388-13405528/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4989694">tayphuong388</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4989694">Pixabay</a>
 
 * Green Leaf Image by <a href="https://pixabay.com/users/llmicro-50538/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=176722">llmicro</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=176722">Pixabay</a>
+
+* Blue Butterfly Image by <a href="https://pixabay.com/users/Garoch-10307/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=142506">Garoch</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=142506">Pixabay</a>
+
+* Indigo Bunting Image by <a href="https://pixabay.com/users/heronworks-1337934/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3590762">heronworks</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3590762">Pixabay</a>
+
+* Violet Flower Image by <a href="https://pixabay.com/users/cocoparisienne-127419/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Anja🤗#helpinghands#stayathome #solidarity#stays healthy🙏</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Pixabay</a>
