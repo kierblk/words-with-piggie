@@ -17,14 +17,13 @@ function fetchCategories() {
 
 function makeCategory(category){
   console.log(`MAKE CATEGORIES FN: Captains log...made category ${category.title}`)
-
-  const sideDiv = document.querySelector('#sidebar')
-  const newCategoryBtn = document.createElement('button')
-  newCategoryBtn.innerHTML = `
+  let sideDropdownMenuDiv = document.querySelector('.dropdown-menu')
+  const newCategoryBtn = `
+    <button class="dropdown-item btn-lg" type="button">
     ${category.title}
+    </button>
   `
-  newCategoryBtn.setAttribute('class', 'btn btn-primary btn-block btn-lg')
-  sideDiv.appendChild(newCategoryBtn)
+  sideDropdownMenuDiv.innerHTML += newCategoryBtn
 }
 
 function fetchCards() {
@@ -44,7 +43,7 @@ function makeCards(card) {
   const newCardDiv = document.createElement('div')
   newCardDiv.setAttribute('class', 'card text-center card-display-ib')
 
-  // Card inner HTML interpolated with card data
+  // Card inner HTML template interpolated with card data
   newCardDiv.innerHTML = `
     <div class="card-body">
       <h5 class="card-title">${card.title}</h5>
