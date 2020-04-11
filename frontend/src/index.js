@@ -2,7 +2,29 @@ document.addEventListener("DOMContentLoaded", init)
 
 function init(){
   console.log("INIT FN: Tea. Earl Grey. Hot.")
-  fetchCards()
+  fetchCategories()
+  // fetchCards()
+}
+
+function fetchCategories() {
+  console.log("FETCH CATEGORIES FN: Make it so.")
+  const backendURL = 'localhost:3000'
+
+  fetch(`http://${backendURL}/categories`)
+    .then(response => response.json())
+    .then(categoriesJSON => categoriesJSON.forEach(category => makeCategory(category)))
+}
+
+function makeCategory(category){
+  console.log(`MAKE CATEGORIES FN: Captains log...made category ${category.title}`)
+
+  const sideDiv = document.querySelector('#sidebar')
+  const newCategoryBtn = document.createElement('button')
+  newCategoryBtn.innerHTML = `
+    ${category.title}
+  `
+  newCategoryBtn.setAttribute('class', 'btn btn-primary btn-block btn-lg')
+  sideDiv.appendChild(newCategoryBtn)
 }
 
 function fetchCards() {
@@ -15,7 +37,7 @@ function fetchCards() {
 }
 
 function makeCards(card) {
-  console.log("MAKECARDS FN: Captains log...")
+  console.log("MAKE CARDS FN: Captains log...")
   // Grab main div where cards will be created
   const mainDiv = document.querySelector('.main')
   // Create new div for each card, set class attributes for styling
