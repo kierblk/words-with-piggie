@@ -57,7 +57,7 @@ function init(){
   }
   
   function makeCategory(category){
-    // console.log(`MAKE CATEGORIES FN: Captains log...made category ${category.title}`)
+
     let categoryDropdownMenuDiv = document.querySelector('.dropdown-menu')
     const newCategoryBtn = `
       <a class="dropdown-item" href="#">
@@ -77,23 +77,43 @@ function init(){
   }
   
   function makeCards(card) {
-    console.log("MAKE CARDS FN: Captains log...")
     const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+
     const newCardDiv = document.createElement('div')
     newCardDiv.setAttribute('class', 'card text-center d-inline-block card-style')
-    newCardDiv.innerHTML = `
-      <img class="card-img-top object-fit-img" src="${card.image}">
-      <div class="card-body">
-        <h5 class="card-title">${card.title}</h5>
-      </div>
-    `
     mainCardWrapperDiv.appendChild(newCardDiv)
+
+    const newImg = document.createElement('img')
+    newImg.setAttribute('data-id', `${card.id}`)
+    newImg.setAttribute('class', 'card-img-top object-fit-img')
+    newImg.setAttribute('src', `${card.image}`)
+    newCardDiv.appendChild(newImg)
+
+    const newCardBodyDiv = document.createElement('div')
+    newCardBodyDiv.setAttribute('class', 'card-body')
+    newCardDiv.appendChild(newCardBodyDiv)
+
+    const cardModalButton = document.createElement('button')
+    cardModalButton.setAttribute('type', 'button')
+    cardModalButton.setAttribute('class', 'btn btn-primary')
+    cardModalButton.setAttribute('data-toggle', 'modal')
+    cardModalButton.setAttribute('data-target', '#cardModalCenter')
+    cardModalButton.setAttribute('data-id', `${card.id}`)
+    cardModalButton.innerText = card.title
+    newCardBodyDiv.appendChild(cardModalButton)
+    newCardDiv.addEventListener('click', handleCardClick)
   }
-  
+
+  function handleCardClick(event) {
+    console.log(event.target.dataset.id)
+    console.log(event)
+  }
+
   function showCard(mainDiv) {
     const images = Array.from(mainDiv)
     const modal = document.querySelector('.modal')
   }
+
 
 }
 
