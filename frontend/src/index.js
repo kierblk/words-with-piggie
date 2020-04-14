@@ -33,6 +33,10 @@ function init(){
   function resetGame() {
     const startWrapper = document.querySelector('#start-wrapper')
     startWrapper.classList.remove('d-none')
+    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+    while(mainCardWrapperDiv.firstChild) { 
+      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
+    } 
   }
   
   function hideStart(event){
