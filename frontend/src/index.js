@@ -29,7 +29,7 @@ class Category {
     console.log(`You clicked category: ${event.target.innerText}`)
   }
 
-  static handleNewCategoryClick(event) {
+  static handleCreateCategoryClick(event) {
     console.log(`You clicked: ${event.target.innerText}`)
   }
 }
@@ -95,8 +95,8 @@ function init(){
   const restartLink = document.querySelector('#restart')
   restartLink.addEventListener('click', resetGame)
 
-  const newCategoryLink = document.querySelector('#new-category')
-  newCategoryLink.addEventListener('click', Category.handleNewCategoryClick)
+  const createCategoryButton = document.querySelector('#create-category-button')
+  createCategoryButton.addEventListener('click', Category.handleCreateCategoryClick )
 
   const modalDiv = document.querySelector('#modals-go-here')
 
