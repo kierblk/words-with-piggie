@@ -223,6 +223,7 @@ function init(){
   }
 
   function hideStart(){
+    startWrapper = document.querySelector('#start-wrapper')
     startWrapper.classList.add('d-none')
     Card.fetchAllCards()
   }
