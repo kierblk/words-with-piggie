@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Words with Pigs</title>
+  <title>Words with Piggie</title>
   <link href="https://fonts.googleapis.com/css?family=Comic+Neue&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css?family=Caveat+Brush|Nanum+Pen+Script&display=swap" rel="stylesheet"> 
   
@@ -45,7 +45,7 @@
               <a class="nav-link" id="new-category" href="#" data-toggle="modal" data-target="#newCategoryModal">New Category</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="new-card" href="#">New Card</a>
+              <a class="nav-link" id="new-card" href="#" data-toggle="modal" data-target="#newCardModal">New Card</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="restart">Restart</a>
@@ -65,7 +65,7 @@
 
           <div id="modals-go-here">
           </div>
-          <!-- Start Card Modal -->
+          <!-- Start Show Card Modal -->
           <div class="modal fade" id="cardModalCenter" tabindex="-1" role="dialog" aria-labelledby="cardModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -90,42 +90,94 @@
               </div>
             </div>
           </div>
-          <!-- End Category Modal -->
+          <!-- End Show Card Modal -->
 
-          <!-- Start Category Modal -->
-          <div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+          <!-- Start New Card Modal -->
+          <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalCenterLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add a Category</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal-header splash">
+                  <h5 class="modal-title text-white" id="newCardTitleLabel">Add a Card</h5>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <form id="new-category-form">
+                <div class="modal-body bg-light">
+                  <form id="new-card-form">
                     <div class="form-group row">
-                      <label for="new-category-title" class="form-label-text col-sm-2 col-form-label">Title</label>
+                      <label for="new-card-title" class="form-label-text col-sm-3 col-form-label">Title</label>
                       <div class="col">
-                        <input type="text" name="new-category-title" id="new-category-title" class="form-control-lg">
+                        <input type="text" name="new-card-title" id="new-card-title" class=" form-control form-control-lg">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="new-category-description" class="form-label-text col-sm-2 col-form-label">Description</label>
+                      <label for="new-card-description" class="form-label-text col-sm-3 col-form-label">Description</label>
                       <div class="col">
-                        <input type="text" name="new-category-description" id="new-category-description" class="form-control-lg">
+                        <input type="text" name="new-card-description" id="new-card-description" class="form-control form-control-lg">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="new-card-image" class="form-label-text col-sm-3 col-form-label">Image</label>
+                      <div class="col">
+                        <input type="text" name="new-card-image" id="new-card-image`" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image">
+                        <small id="imageHelpBlock" class="form-text text-muted">
+                          Please use an image hosting service, such as imgbb.com. 
+                        </small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="new-card-category" class="form-label-text col-sm-3 col-form-label">Category</label>
+                      <div class="col">
+                        <select class="form-control-lg" id="new-card-category-selections">
+                          
+                        </select>
                       </div>
                     </div>
                   </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer splash">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="create-card-button">Create Card</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End New Card Modal-->
+
+          <!-- Start New Category Modal -->
+          <div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header splash">
+                  <h5 class="modal-title" id="exampleModalLabel">Add a Category</h5>
+                  <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body bg-light">
+                  <form id="new-category-form">
+                    <div class="form-group row">
+                      <label for="new-category-title" class="form-label-text col-sm-3 col-form-label">Title</label>
+                      <div class="col">
+                        <input type="text" name="new-category-title" id="new-category-title" class=" form-control form-control-lg">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="new-category-description" class="form-label-text col-sm-3 col-form-label">Description</label>
+                      <div class="col">
+                        <input type="text" name="new-category-description" id="new-category-description" class=" form-control form-control-lg">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer splash">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                   <button type="button" class="btn btn-primary" data-dismiss="modal" id="create-category-button">Create Category</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- End Category Modal-->
+          <!-- End New Category Modal-->
         </div>
       </div>
     </div>

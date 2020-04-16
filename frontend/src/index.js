@@ -113,9 +113,6 @@ class Card {
   }
 
   static showCard(data) {
-    console.log('Success! You have reached showCard')
-    console.log(data)
-
     const cardModalDiv = document.querySelector('#cardModalCenter')
     const cardModalTitle = document.querySelector('#cardModalCenterTitle')
     const cardModalBodyDiv = document.querySelector('#card-modal-body')
@@ -126,7 +123,34 @@ class Card {
     cardModalTitle.innerText = data.title
     cardImgSrc.setAttribute('src', data.image)
     cardDescription.innerText = data.description
+  }
 
+  static handleCreateCardClick(event) {
+    const newTitle = document.querySelector('#new-card-title')
+    const newDescription = document.querySelector('#new-card-description')
+    const newCardForm = document.querySelector('#new-card-form')
+    const newImage = document.querySelector('#new-card-image')
+    const newCardCategory = document.querySelector('#new-card-category-selections')
+
+    let newCard = new Card(newTitle.value, newDescription.value, newImage.value, newCardCategory.value)
+
+    fetch('http://localhost:3000/cards', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newCard)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success! Created New Card:', data.title)
+      Card.makeCategory(data)
+    })
+    .catch((error) => {
+      console.error('Error creating New Card:', error)
+    })
+    newCardForm.reset()
   }
 }
 
@@ -140,7 +164,20 @@ function init(){
   const createCategoryButton = document.querySelector('#create-category-button')
   createCategoryButton.addEventListener('click', Category.handleCreateCategoryClick )
 
-  const modalDiv = document.querySelector('#modals-go-here')
+  const createCardButton = document.querySelector('#create-card-button')
+  createCardButton.addEventListener('click', Card.handleCreateCardClick )
+
+  const newCardLink = document.querySelector('#new-card')
+  newCardLink.addEventListener('click',
+  fetch(`http://localhost:3000/categories`)
+    .then(response => response.json())
+    .then(categoriesJSON => categoriesJSON.forEach(category => {
+      const optionTag = document.createElement('option')
+      const categoriesSelection = document.querySelector('#new-card-category-selections')
+      categoriesSelection.setAttribute('class', 'form-control form-control-lg')
+      optionTag.innerText = category.title
+      categoriesSelection.appendChild(optionTag)
+    })))
 
   Category.fetchAllCategories()
   start(mainDiv)
