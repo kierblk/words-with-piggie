@@ -3,80 +3,27 @@ document.addEventListener("DOMContentLoaded", init)
 function init(){
   // Variable declarations
   const mainDiv = document.querySelector('.main')
-  let getStartedBtn = document.querySelector('#get-started-btn')
- 
-
+  const getStartedBtn = document.querySelector('#get-started-btn')
   getStartedBtn.addEventListener('click', resetGame)
 
-  console.log("INIT FN: Tea. Earl Grey. Hot.")
+  // Setting up classes
 
-  fetchCategories()
-  start(mainDiv)
-
-  // Functions below
-  
-  function start(mainDiv) {
-    const startText = `
-    <div class="" id="start-wrapper">
-      <h1 id="header-text" class="header-text">Welcome</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nam aperiam repudiandae assumenda dolor fugit, cumque doloremque modi, maiores dignissimos necessitatibus excepturi eveniet provident ea suscipit! Quod at distinctio ipsam.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat cupiditate officiis nam veritatis, itaque eos perspiciatis et hic modi sunt expedita harum exercitationem ipsa dicta iure adipisci fuga repellendus optio.</p>
-  
-      <button id="start-button" class="start btn btn-lg btn-success brand-text">Start</button>
-    </div> 
-    `
-    mainDiv.innerHTML += startText
-    const startBtn = document.querySelector('#start-button')
-    startBtn.addEventListener('click', hideStart)
+class Card {
+  constructor(title, description, image, category_id){
+    this.title = title
+    this.description = description
+    this.image = image
+    this.category_id = category_id
   }
 
-  function resetGame() {
-    const startWrapper = document.querySelector('#start-wrapper')
-    startWrapper.classList.remove('d-none')
-    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
-    while(mainCardWrapperDiv.firstChild) { 
-      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
-    } 
-  }
-  
-  function hideStart(event){
-    const startWrapper = document.querySelector('#start-wrapper')
-    startWrapper.classList.add('d-none')
-    console.log(startWrapper)
-    fetchCards()
-    showCard(mainDiv)
-  }
-  
-  function fetchCategories() {
-    // console.log("FETCH CATEGORIES FN: Make it so.")
+  static fetchAllCards() {
     const backendURL = 'localhost:3000'
-  
-    fetch(`http://${backendURL}/categories`)
-      .then(response => response.json())
-      .then(categoriesJSON => categoriesJSON.forEach(category => makeCategory(category)))
-  }
-  
-  function makeCategory(category){
-
-    let categoryDropdownMenuDiv = document.querySelector('.dropdown-menu')
-    const newCategoryBtn = `
-      <a class="dropdown-item" href="#">
-      ${category.title}
-      </a>
-    `
-    categoryDropdownMenuDiv.innerHTML += newCategoryBtn
-  }
-  
-  function fetchCards() {
-    // console.log("FETCHCARDS FN: Make it so.")
-    const backendURL = 'localhost:3000'
-  
     fetch(`http://${backendURL}/cards`)
       .then(response => response.json())
-      .then(cardsJSON => cardsJSON.forEach(card => makeCards(card)))
+      .then(cardsJSON => cardsJSON.forEach(card => Card.makeCards(card)))
   }
-  
-  function makeCards(card) {
+
+  static makeCards(card) {
     const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
 
     const newCardDiv = document.createElement('div')
@@ -98,24 +45,103 @@ function init(){
     cardModalButton.setAttribute('class', 'btn btn-primary')
     cardModalButton.setAttribute('data-toggle', 'modal')
     cardModalButton.setAttribute('data-target', '#cardModalCenter')
-    cardModalButton.setAttribute('data-id', `${card.id}`)
+    cardModalButton.setAttribute('data-card_id', `${card.id}`)
     cardModalButton.innerText = card.title
     newCardBodyDiv.appendChild(cardModalButton)
-    newCardDiv.addEventListener('click', handleCardClick)
+    newCardDiv.addEventListener('click', Card.handleCardClick)
   }
 
-  function handleCardClick(event) {
-    console.log(event.target.dataset.id)
-    console.log(event)
-  }
-
-  function showCard(mainDiv) {
+  // Show Card / Modal Functions
+  showCard(mainDiv) {
     const images = Array.from(mainDiv)
     const modal = document.querySelector('.modal')
   }
 
+  static handleCardClick(event) {
+    console.log(event.target.dataset.card_id)
+  }
+}
+
+class Category {
+  constructor(title, description){
+    this.title = title
+    this.description = description
+  }
+
+  static fetchAllCategories() {
+    const backendURL = 'localhost:3000'
+    fetch(`http://${backendURL}/categories`)
+      .then(response => response.json())
+      .then(categoriesJSON => categoriesJSON.forEach(category => Category.makeCategory(category)))
+  }
+
+  static makeCategory(category){
+    const categoryDropdownMenuDiv = document.querySelector('.dropdown-menu')
+
+    const newCategoryLink = document.createElement('a')
+    newCategoryLink.setAttribute('class', 'dropdown-item')
+    newCategoryLink.setAttribute('href', '#')
+    newCategoryLink.innerText = `${category.title}`
+    categoryDropdownMenuDiv.appendChild(newCategoryLink)
+  }
+}
+
+// Do some stuff
+
+  Category.fetchAllCategories()
+  start(mainDiv)
+
+  // Start / Hide Start / Reset Game functions
+  
+  function start(mainDiv) {
+    const startWrapperDiv = document.createElement('div')
+    startWrapperDiv.setAttribute('id', 'start-wrapper')
+    startWrapperDiv.setAttribute('class', '')
+    mainDiv.appendChild(startWrapperDiv)
+
+    const h1HeaderText = document.createElement('h1')
+    h1HeaderText.setAttribute('id', 'header-text')
+    h1HeaderText.setAttribute('class', 'header-text')
+    h1HeaderText.innerText = 'Welcome'
+    startWrapperDiv.appendChild(h1HeaderText)
+
+    const p1 = document.createElement('p')
+    p1.innerText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nam aperiam repudiandae assumenda dolor fugit, cumque doloremque modi, maiores dignissimos necessitatibus excepturi eveniet provident ea suscipit! Quod at distinctio ipsam.'
+    startWrapperDiv.appendChild(p1)
+
+    const p2 = document.createElement('p')
+    p2.innerText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nam aperiam repudiandae assumenda dolor fugit, cumque doloremque modi, maiores dignissimos necessitatibus excepturi eveniet provident ea suscipit! Quod at distinctio ipsam.'
+    startWrapperDiv.appendChild(p2)
+
+    const startBtn = document.createElement('button')
+    startBtn.setAttribute('id', 'start-button')
+    startBtn.setAttribute('class', 'start btn btn-lg btn-success brand-text')
+    startBtn.innerText = 'Start'
+    startWrapperDiv.appendChild(startBtn)
+    startBtn.addEventListener('click', hideStart)
+  }
+
+  function hideStart(event){
+    const startWrapper = document.querySelector('#start-wrapper')
+    startWrapper.classList.add('d-none')
+    Card.fetchAllCards()
+  }
+
+  function resetGame() {
+    const startWrapper = document.querySelector('#start-wrapper')
+    startWrapper.classList.remove('d-none')
+    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+    while(mainCardWrapperDiv.firstChild) { 
+      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
+    } 
+  }
+
+  // Event Listeners
+
 
 }
+
+
 
 
 
