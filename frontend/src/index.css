@@ -49,6 +49,11 @@ body {
   width: 8rem;
 }
 
+.card-modal-img {
+  height: 30rem;
+  object-fit: cover;
+}
+
 html {
   min-height: 100%;
 }

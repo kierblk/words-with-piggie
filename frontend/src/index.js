@@ -114,10 +114,19 @@ class Card {
 
   static showCard(data) {
     console.log('Success! You have reached showCard')
+    console.log(data)
 
     const cardModalDiv = document.querySelector('#cardModalCenter')
     const cardModalTitle = document.querySelector('#cardModalCenterTitle')
     const cardModalBodyDiv = document.querySelector('#card-modal-body')
+    const cardImgDiv = document.querySelector('#card-image-div')
+    const cardImgSrc = document.querySelector('#card-image')
+    const cardDescription = document.querySelector('#card-description')
+
+    cardModalTitle.innerText = data.title
+    cardImgSrc.setAttribute('src', data.image)
+    cardDescription.innerText = data.description
+
   }
 }
 
