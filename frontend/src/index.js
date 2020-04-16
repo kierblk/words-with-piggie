@@ -98,14 +98,26 @@ class Card {
     newCardDiv.addEventListener('click', Card.handleCardClick)
   }
 
-  // Show Card / Modal Functions
-  showCard(mainDiv) {
-    const images = Array.from(mainDiv)
-    const modal = document.querySelector('.modal')
+  static handleCardClick(event) {
+    console.log(`You have clicked Card ${event.target.dataset.card_id}`)
+
+    fetch(`http://localhost:3000/cards/${event.target.dataset.card_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success! Grabbed card:', data.title)
+        Card.showCard(data)
+      })
+      .catch((error) => {
+        console.error('Error', error)
+      })
   }
 
-  static handleCardClick(event) {
-    console.log(event.target.dataset.card_id)
+  static showCard(data) {
+    console.log('Success! You have reached showCard')
+
+    const cardModalDiv = document.querySelector('#cardModalCenter')
+    const cardModalTitle = document.querySelector('#cardModalCenterTitle')
+    const cardModalBodyDiv = document.querySelector('#card-modal-body')
   }
 }
 
