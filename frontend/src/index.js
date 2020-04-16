@@ -31,6 +31,30 @@ class Category {
 
   static handleCreateCategoryClick(event) {
     console.log(`You clicked: ${event.target.innerText}`)
+    const newTitle = document.querySelector('#new-category-title')
+    const newDescription = document.querySelector('#new-category-description')
+    const newCategoryForm = document.querySelector('#new-category-form')
+    let newCategory = new Category(newTitle.value, newDescription.value)
+
+    fetch('http://localhost:3000/categories', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(newCategory)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success: Created New Category:', data)
+      Category.makeCategory(data)
+    })
+    .catch((error) => {
+      console.error('Error creating New Category:', error)
+    })
+
+    // Then clear the inputs
+    newCategoryForm.reset()
   }
 }
 
