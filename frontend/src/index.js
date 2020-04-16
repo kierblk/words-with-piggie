@@ -30,7 +30,6 @@ class Category {
   }
 
   static handleCreateCategoryClick(event) {
-    console.log(`You clicked: ${event.target.innerText}`)
     const newTitle = document.querySelector('#new-category-title')
     const newDescription = document.querySelector('#new-category-description')
     const newCategoryForm = document.querySelector('#new-category-form')
@@ -46,14 +45,12 @@ class Category {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success: Created New Category:', data)
+      console.log('Success! Created New Category:', data.title)
       Category.makeCategory(data)
     })
     .catch((error) => {
       console.error('Error creating New Category:', error)
     })
-
-    // Then clear the inputs
     newCategoryForm.reset()
   }
 }
