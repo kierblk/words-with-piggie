@@ -1,12 +1,38 @@
 document.addEventListener("DOMContentLoaded", init)
 
-function init(){
-  // Variable declarations
-  const mainDiv = document.querySelector('.main')
-  const getStartedBtn = document.querySelector('#get-started-btn')
-  getStartedBtn.addEventListener('click', resetGame)
+class Category {
+  constructor(title, description){
+    this.title = title
+    this.description = description
+  }
 
-  // Setting up classes
+  static fetchAllCategories() {
+    const backendURL = 'localhost:3000'
+    fetch(`http://${backendURL}/categories`)
+      .then(response => response.json())
+      .then(categoriesJSON => categoriesJSON.forEach(category => Category.makeCategory(category)))
+  }
+
+  static makeCategory(category){
+    const categoryDropdownMenuDiv = document.querySelector('.dropdown-menu')
+
+    const newCategoryLink = document.createElement('a')
+    newCategoryLink.setAttribute('class', 'dropdown-item')
+    newCategoryLink.setAttribute('href', '#')
+    newCategoryLink.innerText = `${category.title}`
+    categoryDropdownMenuDiv.appendChild(newCategoryLink)
+
+    newCategoryLink.addEventListener('click', Category.handleCategoryClick)
+  }
+
+  static handleCategoryClick(event) {
+    console.log(`You clicked category: ${event.target.innerText}`)
+  }
+
+  static handleNewCategoryClick(event) {
+    console.log(`You clicked: ${event.target.innerText}`)
+  }
+}
 
 class Card {
   constructor(title, description, image, category_id){
@@ -62,31 +88,17 @@ class Card {
   }
 }
 
-class Category {
-  constructor(title, description){
-    this.title = title
-    this.description = description
-  }
 
-  static fetchAllCategories() {
-    const backendURL = 'localhost:3000'
-    fetch(`http://${backendURL}/categories`)
-      .then(response => response.json())
-      .then(categoriesJSON => categoriesJSON.forEach(category => Category.makeCategory(category)))
-  }
+function init(){
+  // Variable declarations
+  const mainDiv = document.querySelector('.main')
+  const restartLink = document.querySelector('#restart')
+  restartLink.addEventListener('click', resetGame)
 
-  static makeCategory(category){
-    const categoryDropdownMenuDiv = document.querySelector('.dropdown-menu')
+  const newCategoryLink = document.querySelector('#new-category')
+  newCategoryLink.addEventListener('click', Category.handleNewCategoryClick)
 
-    const newCategoryLink = document.createElement('a')
-    newCategoryLink.setAttribute('class', 'dropdown-item')
-    newCategoryLink.setAttribute('href', '#')
-    newCategoryLink.innerText = `${category.title}`
-    categoryDropdownMenuDiv.appendChild(newCategoryLink)
-  }
-}
-
-// Do some stuff
+  const modalDiv = document.querySelector('#modals-go-here')
 
   Category.fetchAllCategories()
   start(mainDiv)
@@ -135,10 +147,6 @@ class Category {
       mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
     } 
   }
-
-  // Event Listeners
-
-
 }
 
 

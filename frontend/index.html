@@ -42,13 +42,13 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">New Category</a>
+              <a class="nav-link" id="new-category" href="#" data-toggle="modal" data-target="#newCategoryModal">New Category</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">New Card</a>
+              <a class="nav-link" id="new-card" href="#">New Card</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="get-started-btn">Restart Game</a>
+              <a class="nav-link" href="#" id="restart">Restart</a>
             </li>
           </ul>
         </div>
@@ -62,8 +62,11 @@
         <div id="main" class="main text-center">
           <div id="main-card-wrapper">
           </div>
-          <!-- Modal -->
-          <div id="modal" class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+          <div id="modals-go-here">
+          </div>
+          <!-- Start Card Modal -->
+          <div class="modal fade" id="cardModalCenter" tabindex="-1" role="dialog" aria-labelledby="cardModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -82,6 +85,38 @@
               </div>
             </div>
           </div>
+          <!-- End Category Modal -->
+
+          <!-- Start Category Modal -->
+          <div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Create a New Category</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="" method="post">
+                    <p>
+                      <label for="new-category-title" class="brand-text">New Category Title</label><br />
+                      <input type="text" name="new-category-title" id="new-category-title"><br />
+                    </p>
+                    <p>
+                      <label for="new-category-description" class="brand-text">New Category Description</label><br />
+                      <input type="text" name="new-category-description" id="new-category-description"><br />
+                    </p>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Category Modal-->
         </div>
       </div>
     </div>
