@@ -158,6 +158,7 @@ class Card {
 
 function init(){
   // Variable declarations
+  let startWrapper
   const mainDiv = document.querySelector('.main')
   const restartLink = document.querySelector('#restart')
   restartLink.addEventListener('click', resetGame)
@@ -170,8 +171,11 @@ function init(){
 
   const newCardLink = document.querySelector('#new-card')
   newCardLink.addEventListener('click', () => {
-    hideStart()
-    
+    startWrapper = document.querySelector('#start-wrapper')
+    if (!startWrapper.classList.contains('d-none')) {
+      hideStart()
+    }
+
     fetch(`http://localhost:3000/categories`)
     .then(response => response.json())
     .then(categoriesJSON => categoriesJSON.forEach(category => {
@@ -190,6 +194,7 @@ function init(){
   // Start / Hide Start / Reset Game functions
   
   function start(mainDiv) {
+    startWrapper = document.querySelector('#start-wrapper')
     const startWrapperDiv = document.createElement('div')
     startWrapperDiv.setAttribute('id', 'start-wrapper')
     startWrapperDiv.setAttribute('class', '')
@@ -217,8 +222,7 @@ function init(){
     startBtn.addEventListener('click', hideStart)
   }
 
-  function hideStart(event){
-    const startWrapper = document.querySelector('#start-wrapper')
+  function hideStart(){
     startWrapper.classList.add('d-none')
     Card.fetchAllCards()
   }
