@@ -131,8 +131,8 @@ class Card {
     const newCardForm = document.querySelector('#new-card-form')
     const newImage = document.querySelector('#new-card-image')
     const newCardCategory = document.querySelector('#new-card-category-selections')
-
     let newCard = new Card(newTitle.value, newDescription.value, newImage.value, newCardCategory.value)
+    console.log(newCard)
 
     fetch('http://localhost:3000/cards', {
       method: 'POST',
@@ -145,11 +145,12 @@ class Card {
     .then((response) => response.json())
     .then((data) => {
       console.log('Success! Created New Card:', data.title)
-      Card.makeCategory(data)
+      Card.makeCards(data)
     })
     .catch((error) => {
       console.error('Error creating New Card:', error)
     })
+
     newCardForm.reset()
   }
 }
@@ -168,16 +169,20 @@ function init(){
   createCardButton.addEventListener('click', Card.handleCreateCardClick )
 
   const newCardLink = document.querySelector('#new-card')
-  newCardLink.addEventListener('click',
-  fetch(`http://localhost:3000/categories`)
+  newCardLink.addEventListener('click', () => {
+    hideStart()
+    
+    fetch(`http://localhost:3000/categories`)
     .then(response => response.json())
     .then(categoriesJSON => categoriesJSON.forEach(category => {
       const optionTag = document.createElement('option')
       const categoriesSelection = document.querySelector('#new-card-category-selections')
       categoriesSelection.setAttribute('class', 'form-control form-control-lg')
       optionTag.innerText = category.title
+      optionTag.setAttribute('value', category.id)
       categoriesSelection.appendChild(optionTag)
-    })))
+    }))
+  })
 
   Category.fetchAllCategories()
   start(mainDiv)

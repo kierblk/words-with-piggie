@@ -63,8 +63,6 @@
           <div id="main-card-wrapper">
           </div>
 
-          <div id="modals-go-here">
-          </div>
           <!-- Start Show Card Modal -->
           <div class="modal fade" id="cardModalCenter" tabindex="-1" role="dialog" aria-labelledby="cardModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -103,6 +101,7 @@
                   </button>
                 </div>
                 <div class="modal-body bg-light">
+
                   <form id="new-card-form">
                     <div class="form-group row">
                       <label for="new-card-title" class="form-label-text col-sm-3 col-form-label">Title</label>
@@ -119,7 +118,7 @@
                     <div class="form-group row">
                       <label for="new-card-image" class="form-label-text col-sm-3 col-form-label">Image</label>
                       <div class="col">
-                        <input type="text" name="new-card-image" id="new-card-image`" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image">
+                        <input type="text" name="new-card-image" id="new-card-image" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image">
                         <small id="imageHelpBlock" class="form-text text-muted">
                           Please use an image hosting service, such as imgbb.com. 
                         </small>
@@ -129,11 +128,11 @@
                       <label for="new-card-category" class="form-label-text col-sm-3 col-form-label">Category</label>
                       <div class="col">
                         <select class="form-control-lg" id="new-card-category-selections">
-                          
                         </select>
                       </div>
                     </div>
                   </form>
+
                 </div>
                 <div class="modal-footer splash">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
