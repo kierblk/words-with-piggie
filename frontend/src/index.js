@@ -53,6 +53,13 @@ class Category {
     })
     newCategoryForm.reset()
   }
+
+  static resetCategoryList() {
+    const categoriesSelection = document.querySelector('#new-card-category-selections')
+    while(categoriesSelection.firstChild) { 
+      categoriesSelection.removeChild(categoriesSelection.firstChild); 
+    } 
+  }
 }
 
 class Card {
@@ -146,11 +153,12 @@ class Card {
     .then((data) => {
       console.log('Success! Created New Card:', data.title)
       Card.makeCards(data)
+      Category.resetCategoryList()
     })
     .catch((error) => {
       console.error('Error creating New Card:', error)
+      Category.resetCategoryList()
     })
-
     newCardForm.reset()
   }
 }
@@ -169,9 +177,12 @@ function init(){
   const createCardButton = document.querySelector('#create-card-button')
   createCardButton.addEventListener('click', Card.handleCreateCardClick )
 
+  const cancelNewCardButton = document.querySelector('#cancel-card')
+  cancelNewCardButton.addEventListener('click', Category.resetCategoryList)
+
   const newCardLink = document.querySelector('#new-card')
   newCardLink.addEventListener('click', () => {
-    startWrapper = document.querySelector('#start-wrapper')
+    startWrapper = document.querySelector('#start-wrapper')    
     if (!startWrapper.classList.contains('d-none')) {
       hideStart()
     }
