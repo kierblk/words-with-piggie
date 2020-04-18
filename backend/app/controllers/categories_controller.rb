@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   def create
-    @category = CategorySerializer.new(category_params)
+    @category = Category.new(category_params)
 
     if @category.save
       render json: @category, status: :created, location: @category
