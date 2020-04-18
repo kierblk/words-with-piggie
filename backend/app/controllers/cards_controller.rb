@@ -4,13 +4,16 @@ class CardsController < ApplicationController
   # GET /cards
   def index
     @cards = Card.all
+    options = {
+      include: [:category]
+    }
 
-    render json: @cards
+    render json: CardSerializer.new(@cards, options)
   end
 
   # GET /cards/1
   def show
-    render json: @card
+    render json: CardSerializer.new(@card)
   end
 
   # POST /cards

@@ -4,18 +4,21 @@ class CategoriesController < ApplicationController
   # GET /categories
   def index
     @categories = Category.all
+    options = {
+      include: [:cards]
+    }
 
-    render json: @categories
+    render json: CategorySerializer.new(@categories, options)
   end
 
   # GET /categories/1
   def show
-    render json: @category
+    render json: CategorySerializer.new(@category)
   end
 
   # POST /categories
   def create
-    @category = Category.new(category_params)
+    @category = CategorySerializer.new(category_params)
 
     if @category.save
       render json: @category, status: :created, location: @category
