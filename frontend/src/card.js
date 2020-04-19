@@ -186,7 +186,7 @@ class Card {
     })
     .then((response) => response.json())
     .then((cardJSON) => {
-      console.log('Success! Updated card. New title:', cardJSON.title)
+      console.log('Success! Updated card:', cardJSON.title)
       // remove old card before inserting updated card into the DOM
       const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
       mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
