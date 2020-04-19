@@ -45,10 +45,13 @@ function init(){
     if (!startWrapper.classList.contains('d-none')) {
       hideStart()
     }
+    
+    const newCardForm = document.querySelector('#new-card-form')
+    newCardForm.reset()
 
     // A GET fetch request for all categories to populate the categories dropdown
     // in the create new card modal.
-    Category.insertCategoryOptions()
+    Category.insertCategoryOptionsNew()
   })
 
   // Loading all categories into the nav bar dropdown upon DOM content loaded
@@ -107,8 +110,3 @@ function init(){
     } 
   }
 }
-
-
-
-
-

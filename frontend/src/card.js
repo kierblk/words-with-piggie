@@ -131,7 +131,8 @@ class Card {
     .catch((error) => {
       console.error('Error deleteing card:', error)
     })
-    mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+    // remove element with certain card id
+    // mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
   }
 
   static handleEditCardClick() {
@@ -189,7 +190,8 @@ class Card {
       console.log('Success! Updated card:', cardJSON.title)
       // remove old card before inserting updated card into the DOM
       const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
-      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+      // remove element with certain card id
+      // mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
       Card.makeCards(cardJSON)
       Category.resetCategoryListNew()
       editCardForm.reset()
