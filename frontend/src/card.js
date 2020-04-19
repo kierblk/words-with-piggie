@@ -20,10 +20,11 @@ class Card {
 
     const newCardDiv = document.createElement('div')
     newCardDiv.setAttribute('class', 'card text-center d-inline-block card-style')
+    newCardDiv.setAttribute('data-card-id', `${card.id}` )
     mainCardWrapperDiv.appendChild(newCardDiv)
 
     const newImg = document.createElement('img')
-    newImg.setAttribute('data-id', `${card.id}`)
+    newImg.setAttribute('data-card-id', `${card.id}`)
     newImg.setAttribute('data-category-name', `${card.category_name}`)
     newImg.setAttribute('class', 'card-img-top object-fit-img')
     newImg.setAttribute('src', `${card.image}`)
@@ -31,6 +32,7 @@ class Card {
 
     const newCardBodyDiv = document.createElement('div')
     newCardBodyDiv.setAttribute('class', 'card-body')
+    newCardBodyDiv.setAttribute('data-card-id', `${card.id}`)
     newCardDiv.appendChild(newCardBodyDiv)
 
     const cardModalButton = document.createElement('button')
@@ -120,19 +122,25 @@ class Card {
   static handleDeleteCardClick() {
     // A DELETE fetch to delete a card, after deletion the card is
     // removed from the DOM.
-    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
     fetch(`${BASE_URL}/cards/${this.dataset.cardId}`, {
       method: "DELETE", 
       mode: "cors"
     })
       .then(() => {
+
       console.log(`Success, deleted card number ${this.dataset.cardId}!`)
+      // Find card element with certain card id from the DOM
+      document.querySelectorAll('.card.text-center.d-inline-block.card-style').forEach((card) => {
+        if(card.dataset.cardId === this.dataset.cardId){
+          card.remove()
+        }
+      })
     })
     .catch((error) => {
       console.error('Error deleteing card:', error)
     })
-    // remove element with certain card id
-    // mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+    
+    
   }
 
   static handleEditCardClick() {
@@ -189,9 +197,12 @@ class Card {
     .then((cardJSON) => {
       console.log('Success! Updated card:', cardJSON.title)
       // remove old card before inserting updated card into the DOM
-      const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
-      // remove element with certain card id
-      // mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+      // Find card element with certain card id from the DOM
+      document.querySelectorAll('.card.text-center.d-inline-block.card-style').forEach((card) => {
+        if(card.dataset.cardId === this.dataset.cardId){
+          card.remove()
+        }
+      })
       Card.makeCards(cardJSON)
       Category.resetCategoryListNew()
       editCardForm.reset()
