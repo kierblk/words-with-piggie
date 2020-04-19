@@ -21,7 +21,11 @@ function init(){
 
   const createCardButton = document.querySelector('#create-card-button')
   // Event listener to create a card
-  createCardButton.addEventListener('click', Card.handleCreateCardClick )
+  createCardButton.addEventListener('click', Card.handleCreateCardClick)
+
+  const editCardButton = document.querySelector('#save-edit-card-button')
+  // Event listener to create a card
+  editCardButton.addEventListener('click', Card.handleEditSaveClick)
 
   const cancelNewCardButton = document.querySelector('#cancel-card')
   // Event listener to reset the category list if you cancel creating a new card
@@ -44,16 +48,7 @@ function init(){
 
     // A GET fetch request for all categories to populate the categories dropdown
     // in the create new card modal.
-    fetch(`${BASE_URL}/categories`)
-    .then(response => response.json())
-    .then(categoriesJSON => categoriesJSON.data.forEach(category => {
-      const optionTag = document.createElement('option')
-      const categoriesSelection = document.querySelector('#new-card-category-selections')
-      categoriesSelection.setAttribute('class', 'form-control form-control-lg')
-      optionTag.innerText = category.attributes.title
-      optionTag.setAttribute('value', category.id)
-      categoriesSelection.appendChild(optionTag)
-    }))
+    Category.insertCategoryOptions()
   })
 
   // Loading all categories into the nav bar dropdown upon DOM content loaded

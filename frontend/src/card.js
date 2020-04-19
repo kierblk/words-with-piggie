@@ -38,7 +38,7 @@ class Card {
     cardModalButton.setAttribute('class', 'btn btn-primary')
     cardModalButton.setAttribute('data-toggle', 'modal')
     cardModalButton.setAttribute('data-target', '#cardModalCenter')
-    cardModalButton.setAttribute('data-card_id', `${card.id}`)
+    cardModalButton.setAttribute('data-card-id', `${card.id}`)
     cardModalButton.innerText = card.title
     newCardBodyDiv.appendChild(cardModalButton)
 
@@ -46,11 +46,11 @@ class Card {
     cardModalButton.addEventListener('click', Card.handleCardClick)
   }
 
-  static handleCardClick(event) {
+  static handleCardClick() {
     // After clicking the card modal button,
     // a GET fetch request is made for the specified card.
     // CArd information is passed to the show card method.
-    fetch(`${BASE_URL}/cards/${event.target.dataset.card_id}`)
+    fetch(`${BASE_URL}/cards/${this.dataset.cardId}`)
       .then((response) => response.json())
       .then((cardJSON) => {
         console.log('Success! Grabbed card:', cardJSON.data.attributes.title)
@@ -75,9 +75,14 @@ class Card {
     cardImgSrc.setAttribute('src', card.attributes.image)
     cardDescription.innerText = card.attributes.description
 
+    // Event listener for deleting the card
     const cardDeleteButton = document.querySelector('#delete-card-button')
     cardDeleteButton.setAttribute('data-card-id', `${card.id}`)
     cardDeleteButton.addEventListener('click', Card.handleDeleteCardClick)
+
+    const cardEditButton = document.querySelector('#edit-card-button')
+    cardEditButton.setAttribute('data-card-id', `${card.id}`)
+    cardEditButton.addEventListener('click', Card.handleEditCardClick)
   }
 
   static handleCreateCardClick(event) {
@@ -103,14 +108,18 @@ class Card {
     .then((cardJSON) => {
       console.log('Success! Created New Card:', cardJSON.title)
       Card.makeCards(cardJSON)
+      Category.resetCategoryListNew()
     })
     .catch((error) => {
       console.error('Error creating New Card:', error)
+      Category.resetCategoryListNew()
     })
     newCardForm.reset()
   }
 
   static handleDeleteCardClick() {
+    // A DELETE fetch to delete a card, after deletion the card is
+    // removed from the DOM.
     const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
     fetch(`${BASE_URL}/cards/${this.dataset.cardId}`, {
       method: "DELETE", 
@@ -123,5 +132,72 @@ class Card {
       console.error('Error deleteing card:', error)
     })
     mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+  }
+
+  static handleEditCardClick() {
+    // trigger category options to be loaded into dom
+    Category.insertCategoryOptionsEdit()
+
+    const oldTitle = document.querySelector('#edit-card-title')
+    const oldDescription = document.querySelector('#edit-card-description')
+    const oldImage = document.querySelector('#edit-card-image')
+    oldImage.setAttribute('placeholder', '')
+    const oldCardCategory = document.querySelector('#edit-card-category-selections')
+    const editCardButton = document.querySelector('#save-edit-card-button')
+    
+
+    // Making a GET fetch to grab the card, can I do this another way?
+    fetch(`${BASE_URL}/cards/${this.dataset.cardId}`)
+    .then((response) => response.json())
+    .then((cardJSON) => {
+      oldTitle.setAttribute('value', `${cardJSON.data.attributes.title}`)
+      oldDescription.setAttribute('value', `${cardJSON.data.attributes.description}`)
+      oldImage.setAttribute('value', `${cardJSON.data.attributes.image}`)
+      oldCardCategory.setAttribute('value', `${cardJSON.data.attributes.category_id}`)
+      editCardButton.setAttribute('data-card-id', `${cardJSON.data.attributes.id}`)
+    })
+    .catch((error) => {
+      console.error('Error', error)
+      editCardForm.reset()
+    })
+  }
+
+  static handleEditSaveClick() {
+    const oldTitle = document.querySelector('#edit-card-title')
+    const oldDescription = document.querySelector('#edit-card-description')
+    const oldImage = document.querySelector('#edit-card-image')
+    const oldCardCategory = document.querySelector('#edit-card-category-selections')
+    const editCardForm = document.querySelector('#edit-card-form')
+
+    let updatedCard = {
+      title: oldTitle.value,
+      description: oldDescription.value,
+      image: oldImage.value,
+      category_id: oldCardCategory.value
+    }
+
+    fetch(`${BASE_URL}/cards/${this.dataset.cardId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(updatedCard)
+    })
+    .then((response) => response.json())
+    .then((cardJSON) => {
+      console.log('Success! Updated card. New title:', cardJSON.title)
+      // remove old card before inserting updated card into the DOM
+      const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
+      Card.makeCards(cardJSON)
+      Category.resetCategoryListNew()
+      editCardForm.reset()
+    })
+    .catch((error) => {
+      console.error('Error creating New Card:', error)
+      Category.resetCategoryListNew()
+      editCardForm.reset()
+    })
   }
 }

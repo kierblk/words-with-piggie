@@ -58,10 +58,45 @@ class Category {
     newCategoryForm.reset()
   }
 
-  static resetCategoryList() {
+  static resetCategoryListNew() {
     // This method prevents duplicates being shown in the category selection dropdown
     // when a new card is created or is cancelled/closed during creation.
     const categoriesSelection = document.querySelector('#new-card-category-selections')
+    while(categoriesSelection.firstChild) { 
+      categoriesSelection.removeChild(categoriesSelection.firstChild); 
+    } 
+  }
+
+  static insertCategoryOptionsNew() {
+    fetch(`${BASE_URL}/categories`)
+    .then(response => response.json())
+    .then(categoriesJSON => categoriesJSON.data.forEach(category => {
+      const optionTag = document.createElement('option')
+      const categoriesSelection = document.querySelector('#new-card-category-selections')
+      categoriesSelection.setAttribute('class', 'form-control form-control-lg')
+      optionTag.innerText = category.attributes.title
+      optionTag.setAttribute('value', category.id)
+      categoriesSelection.appendChild(optionTag)
+    }))
+  }
+
+  static insertCategoryOptionsEdit() {
+    fetch(`${BASE_URL}/categories`)
+    .then(response => response.json())
+    .then(categoriesJSON => categoriesJSON.data.forEach(category => {
+      const optionTag = document.createElement('option')
+      const categoriesSelection = document.querySelector('#edit-card-category-selections')
+      categoriesSelection.setAttribute('class', 'form-control form-control-lg')
+      optionTag.innerText = category.attributes.title
+      optionTag.setAttribute('value', category.id)
+      categoriesSelection.appendChild(optionTag)
+    }))
+  }
+
+  static resetCategoryListEdit() {
+    // This method prevents duplicates being shown in the category selection dropdown
+    // when a new card is created or is cancelled/closed during creation.
+    const categoriesSelection = document.querySelector('#edit-card-category-selections')
     while(categoriesSelection.firstChild) { 
       categoriesSelection.removeChild(categoriesSelection.firstChild); 
     } 

@@ -84,7 +84,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button id="edit-card-button" type="button" class="btn btn-outline-primary" data-card-id=""><i class="far fa-edit"></i></button>
+                  <button id="edit-card-button" type="button" class="btn btn-outline-primary" data-card-id="" data-dismiss="modal" data-toggle="modal" data-target="#editCardModal"><i class="far fa-edit"></i></button>
                   <button id="delete-card-button" type="button" class="btn btn-outline-danger" data-dismiss="modal" data-card-id=""><i class="far fa-trash-alt"></i></button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
@@ -109,19 +109,19 @@
                     <div class="form-group row">
                       <label for="new-card-title" class="form-label-text col-sm-3 col-form-label">Title</label>
                       <div class="col">
-                        <input type="text" name="new-card-title" id="new-card-title" class=" form-control form-control-lg">
+                        <input type="text" name="new-card-title" id="new-card-title" class=" form-control form-control-lg" value="">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="new-card-description" class="form-label-text col-sm-3 col-form-label">Description</label>
                       <div class="col">
-                        <input type="text" name="new-card-description" id="new-card-description" class="form-control form-control-lg">
+                        <input type="text" name="new-card-description" id="new-card-description" class="form-control form-control-lg" value="">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="new-card-image" class="form-label-text col-sm-3 col-form-label">Image</label>
                       <div class="col">
-                        <input type="text" name="new-card-image" id="new-card-image" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image">
+                        <input type="text" name="new-card-image" id="new-card-image" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image" value="">
                         <small id="imageHelpBlock" class="form-text text-muted">
                           Please use an image hosting service, such as imgbb.com. 
                         </small>
@@ -145,6 +145,59 @@
             </div>
           </div>
           <!-- End New Card Modal-->
+
+          <!-- Start Edit Card Modal -->
+          <div class="modal fade" id="editCardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalCenterLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header splash">
+                  <h5 class="modal-title text-white" id="editCardTitleLabel">Edit Card</h5>
+                  <button type="button" id="close-card" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body bg-light">
+
+                  <form id="edit-card-form">
+                    <div class="form-group row">
+                      <label for="edit-card-title" class="form-label-text col-sm-3 col-form-label">Title</label>
+                      <div class="col">
+                        <input type="text" name="edit-card-title" id="edit-card-title" class=" form-control form-control-lg" value="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="edit-card-description" class="form-label-text col-sm-3 col-form-label">Description</label>
+                      <div class="col">
+                        <input type="text" name="edit-card-description" id="edit-card-description" class="form-control form-control-lg" value="">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="edit-card-image" class="form-label-text col-sm-3 col-form-label">Image</label>
+                      <div class="col">
+                        <input type="text" name="new-card-image" id="edit-card-image" class="form-control form-control-lg" aria-describedby="imageHelpBlock" placeholder="http://www.something.com/image" value="">
+                        <small id="imageHelpBlock" class="form-text text-muted">
+                          Please use an image hosting service, such as imgbb.com. 
+                        </small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="edit-card-category" class="form-label-text col-sm-3 col-form-label">Category</label>
+                      <div class="col">
+                        <select class="form-control-lg" id="edit-card-category-selections">
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+                <div class="modal-footer splash">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel-card">Cancel</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" data-card-id="" id="save-edit-card-button">Edit Card</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End New/Edit Card Modal-->
 
           <!-- Start New Category Modal -->
           <div class="modal fade" id="newCategoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
