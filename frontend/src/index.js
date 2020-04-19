@@ -2,11 +2,6 @@ document.addEventListener("DOMContentLoaded", init)
 
 BASE_URL = 'http://localhost:3000'
 
-
-
-
-
-
 function init(){
   // startWrapper declared but not defined as it does not exist in the DOM at this point.
   let startWrapper
@@ -14,6 +9,12 @@ function init(){
   const restartLink = document.querySelector('#restart')
   // Event listener to "reset" the game
   restartLink.addEventListener('click', resetGame)
+
+  const allCategoriesLink = document.querySelector('#all-categories-link')
+  allCategoriesLink.addEventListener('click', () => {
+    Card.removeAllCards()
+    hideStart()
+  })
 
   const createCategoryButton = document.querySelector('#create-category-button')
   // Event listener to create a category
@@ -27,13 +28,21 @@ function init(){
   // Event listener to create a card
   editCardButton.addEventListener('click', Card.handleEditSaveClick)
 
-  const cancelNewCardButton = document.querySelector('#cancel-card')
+  const cancelNewCardButton = document.querySelector('#cancel-new-card')
   // Event listener to reset the category list if you cancel creating a new card
-  cancelNewCardButton.addEventListener('click', Category.resetCategoryList)
+  cancelNewCardButton.addEventListener('click', Category.resetCategoryListNew)
 
-  const closeNewCardButton = document.querySelector('#close-card')
+  const closeNewCardButton = document.querySelector('#close-new-card')
   // Event listener to reset the category list if you cancel creating a new card
-  closeNewCardButton.addEventListener('click', Category.resetCategoryList)
+  closeNewCardButton.addEventListener('click', Category.resetCategoryListNew)
+
+  const cancelEditCardButton = document.querySelector('#cancel-edit-card')
+  // Event listener to reset the category list if you cancel creating a Edit card
+  cancelEditCardButton.addEventListener('click', Category.resetCategoryListEdit)
+
+  const closeEditCardButton = document.querySelector('#close-edit-card')
+  // Event listener to reset the category list if you cancel creating a Edit card
+  closeEditCardButton.addEventListener('click', Category.resetCategoryListEdit)
 
   const newCardLink = document.querySelector('#new-card')
   newCardLink.addEventListener('click', () => {
@@ -104,9 +113,6 @@ function init(){
     // 'd-none' class from the wrapper div.
     const startWrapper = document.querySelector('#start-wrapper')
     startWrapper.classList.remove('d-none')
-    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
-    while(mainCardWrapperDiv.firstChild) { 
-      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
-    } 
+    Card.removeAllCards()
   }
 }

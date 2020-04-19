@@ -213,4 +213,12 @@ class Card {
       editCardForm.reset()
     })
   }
+
+  static removeAllCards() {
+    //removes all cards from the gameboard to render/insert something else
+    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+    while(mainCardWrapperDiv.firstChild) { 
+      mainCardWrapperDiv.removeChild(mainCardWrapperDiv.firstChild); 
+    } 
+  }
 }

@@ -18,6 +18,7 @@ class Category {
     const newCategoryLink = document.createElement('a')
     newCategoryLink.setAttribute('class', 'dropdown-item')
     newCategoryLink.setAttribute('href', '#')
+    newCategoryLink.setAttribute('data-category-id', `${category.id}`)
     newCategoryLink.innerText = `${category.title}`
     categoryDropdownMenuDiv.appendChild(newCategoryLink)
 
@@ -28,6 +29,13 @@ class Category {
   static handleCategoryClick(event) {
     //Place holder for sort by category
     console.log(`You clicked category: ${event.target.innerText}`)
+    console.log(event.target.dataset.categoryId)
+    fetch(`${BASE_URL}/categories/${event.target.dataset.categoryId}`)
+      .then(response => response.json())
+      .then(categoryCards => {
+        Card.removeAllCards()
+        categoryCards.data.attributes.cards.forEach(card => Card.makeCards(card))
+      })
   }
 
   static handleCreateCategoryClick(event) {
