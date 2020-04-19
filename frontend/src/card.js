@@ -69,10 +69,15 @@ class Card {
     const cardImgDiv = document.querySelector('#card-image-div')
     const cardImgSrc = document.querySelector('#card-image')
     const cardDescription = document.querySelector('#card-description')
+    const cardModalFooter = document.querySelector('#card-modal-footer')
 
     cardModalTitle.innerText = `${card.attributes.category_name} - ${card.attributes.title}`
     cardImgSrc.setAttribute('src', card.attributes.image)
     cardDescription.innerText = card.attributes.description
+
+    const cardDeleteButton = document.querySelector('#delete-card-button')
+    cardDeleteButton.setAttribute('data-card-id', `${card.id}`)
+    cardDeleteButton.addEventListener('click', Card.handleDeleteCardClick)
   }
 
   static handleCreateCardClick(event) {
@@ -85,8 +90,6 @@ class Card {
     const newImage = document.querySelector('#new-card-image')
     const newCardCategory = document.querySelector('#new-card-category-selections')
     let newCard = new Card(newTitle.value, newDescription.value, newImage.value, newCardCategory.value)
-    console.log(newCard)
-    console.log("First")
 
     fetch(`${BASE_URL}/cards`, {
       method: 'POST',
@@ -98,13 +101,27 @@ class Card {
     })
     .then((response) => response.json())
     .then((cardJSON) => {
-      console.log('Success! Created New Card:', cardJSON)
+      console.log('Success! Created New Card:', cardJSON.title)
       Card.makeCards(cardJSON)
     })
     .catch((error) => {
-      console.log("Second")
       console.error('Error creating New Card:', error)
     })
     newCardForm.reset()
+  }
+
+  static handleDeleteCardClick() {
+    const mainCardWrapperDiv = document.querySelector('#main-card-wrapper')
+    fetch(`${BASE_URL}/cards/${this.dataset.cardId}`, {
+      method: "DELETE", 
+      mode: "cors"
+    })
+      .then(() => {
+      console.log(`Success, deleted card number ${this.dataset.cardId}!`)
+    })
+    .catch((error) => {
+      console.error('Error deleteing card:', error)
+    })
+    mainCardWrapperDiv.removeChild(mainCardWrapperDiv.lastChild)
   }
 }
