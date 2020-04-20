@@ -1,33 +1,24 @@
 # Words with Piggie
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome!! This Rails and Javascript app was built as a way to engage my daughter during our speech therapy home sessions. My daughter is 2.5 years old and has an absolute love of all things Pig. Her special "lovey" is a pink pig referred to simply as "piggie".
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+Fork the repository and then clone.
 
-* System dependencies
+- Run `bundle install` to install the various dependencies specified within the Gemfile.
 
-* Configuration
+- Navigate to the `/backend` folder within the app and run `rails s` to start the rails server.
 
-* Database creation
+- As this app utilizes [PostgreSQL](https://www.postgresql.org/), please ensure PostgreSQL is intalled and running.
 
-* Database initialization
+- Navigate to the `/frontend` folder and open `index.html` in your browser.
 
-* How to run the test suite
+## Heroku
 
-* Services (job queues, cache servers, search engines, etc.)
+Plans are to deploy this app to Heroku at: https://words-with-piggie.herokuapp.com/
 
-* Deployment instructions
-
-* ...
-
-Heroku: https://words-with-piggie.herokuapp.com/
-
-## Attributions
-
-* Pig Icon [pig3.svg / pig3b.svg]: Icons made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)
+## Image Attributions
 
 * Pig Icon Used in Navbar as Brand Icon [pig4.svg]: Icons made by [photo3idea_studio](https://www.flaticon.com/authors/photo3idea-studio) from [www.flaticon.com](https://www.flaticon.com)
 
