@@ -21,43 +21,43 @@ Card.create([
   {
     title: "Red", 
     description: "A red ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/qCBKxc9/apples-634572-640.jpg", 
     category: Category.first
   },
   {
     title: "Orange", 
     description: "A orange ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/2dfMksw/tangerines-1721590-640.jpg", 
     category: Category.first
   },
   {
     title: "Yellow", 
     description: "A yellow ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/wM6KcxX/rananculus-4989694-640.jpg", 
     category: Category.first
   },
   {
     title: "Green", 
     description: "A green ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/0JsXf1Z/green-leaf-176722-640.jpg", 
     category: Category.first
   },
   {
     title: "Blue", 
     description: "A blue ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/4WPm1XW/butterfly-142506-640.jpg", 
     category: Category.first
   },
   {
     title: "Indigo", 
     description: "A indigo ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/fkGXRjN/indigo-3590762-640.jpg", 
     category: Category.first
   },
   {
     title: "Violet", 
     description: "A violet ball.", 
-    image: "image url here", 
+    image: "https://i.ibb.co/n1rDpV6/cranesbill-374343-640.jpg", 
     category: Category.first
   }
 ])
