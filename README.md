@@ -20,8 +20,6 @@ Plans are to deploy this app to Heroku at: https://words-with-piggie.herokuapp.c
 
 ## Image Attributions
 
-* Pig Icon Used in Navbar as Brand Icon [pig4.svg]: Icons made by [photo3idea_studio](https://www.flaticon.com/authors/photo3idea-studio) from [www.flaticon.com](https://www.flaticon.com)
-
 * Apple Image by <a href="https://pixabay.com/users/Desertrose7-752536/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=634572">Tracy Lundgren</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=634572">Pixabay</a>
 
 * Orange Image by <a href="https://pixabay.com/users/pixel2013-2364555/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1721590">S. Hermann &amp; F. Richter</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1721590">Pixabay</a>
@@ -34,4 +32,4 @@ Plans are to deploy this app to Heroku at: https://words-with-piggie.herokuapp.c
 
 * Indigo Bunting Image by <a href="https://pixabay.com/users/heronworks-1337934/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3590762">heronworks</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3590762">Pixabay</a>
 
-* Violet Flower Image by <a href="https://pixabay.com/users/cocoparisienne-127419/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Anja🤗#helpinghands#stayathome #solidarity#stays healthy🙏</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Pixabay</a>
+* Violet Flower Image by <a href="https://pixabay.com/users/cocoparisienne-127419/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Anja</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=374343">Pixabay</a>
