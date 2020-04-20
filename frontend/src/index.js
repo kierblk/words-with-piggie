@@ -24,9 +24,12 @@ function init(){
   // Event listener to create a card
   createCardButton.addEventListener('click', Card.handleCreateCardClick)
 
-  const editCardButton = document.querySelector('#save-edit-card-button')
+  const editCardButton = document.querySelector('#edit-card-button')
+  editCardButton.addEventListener('click', Category.resetCategoryListEdit)
+
+  const editCardSaveButton = document.querySelector('#save-edit-card-button')
   // Event listener to create a card
-  editCardButton.addEventListener('click', Card.handleEditSaveClick)
+  editCardSaveButton.addEventListener('click', Card.handleEditSaveClick)
 
   const cancelNewCardButton = document.querySelector('#cancel-new-card')
   // Event listener to reset the category list if you cancel creating a new card
