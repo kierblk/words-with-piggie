@@ -4,7 +4,7 @@
   "description": "A Flatiron School Portfolio Project. A Javascript frontend and Rails backend SPA that provides a fun way to review target words for speech development in toddlers.",
   "scripts": {
     "start": "serve ./backend",
-    "start": "serve ./frontend",
+    "start": "serve ./frontend"
   },
   "dependencies": {
     "serve": "^10.0.1"
