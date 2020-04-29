@@ -111,7 +111,7 @@ class Category {
   }
 
   static handleManageCategoriesClick(){
-    const categoryListDiv = document.querySelector('#category-list')
+    const categoryListUL = document.querySelector('#category-list-ul')
     console.log('you clicked this')
 
     fetch(`${BASE_URL}/categories`)
@@ -136,7 +136,7 @@ class Category {
 
         newCategoryListItem.append(deleteCategoryButton)
 
-        categoryListDiv.appendChild(newCategoryListItem)
+        categoryListUL.appendChild(newCategoryListItem)
       }))
 
       // Add event listener to the delete button
@@ -144,6 +144,17 @@ class Category {
       // Create alert to confirm that delete will do the above thing.
       // After delete, reset the list
 
-      // Add event listener to close that resets the list
+      // Add edit button
+      // edit button triggers edit category modal
+      // edit category modal needs created
+
+      Category.resetCategoryListManage()
+  }
+
+  static resetCategoryListManage() {
+    const categoryListUL = document.querySelector('#category-list-ul')
+    while(categoryListUL.firstChild) { 
+      categoryListUL.removeChild(categoryListUL.firstChild); 
+    } 
   }
 }
