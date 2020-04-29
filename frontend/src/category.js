@@ -109,4 +109,41 @@ class Category {
       categoriesSelection.removeChild(categoriesSelection.firstChild); 
     } 
   }
+
+  static handleManageCategoriesClick(){
+    const categoryListDiv = document.querySelector('#category-list')
+    console.log('you clicked this')
+
+    fetch(`${BASE_URL}/categories`)
+      .then(response => response.json())
+      .then(categoriesJSON => categoriesJSON.data.forEach(category => {
+        console.log(category.attributes)
+
+        const newCategoryListItem = document.createElement('li')
+        newCategoryListItem.setAttribute('data-category-id', `${category.attributes.id}`)
+        newCategoryListItem.innerText = `${category.attributes.title}`
+
+        const deleteCategoryButton = document.createElement('button')
+        deleteCategoryButton.setAttribute('id', 'delete-category-button')
+        deleteCategoryButton.setAttribute('type', 'button')
+        deleteCategoryButton.setAttribute('class', 'btn btn-outline-danger')
+        deleteCategoryButton.setAttribute('data-dismiss', 'modal')
+        deleteCategoryButton.setAttribute('data-category-id', `${category.attributes.id}`)
+
+        const deleteFAIcon = document.createElement('i')
+        deleteFAIcon.setAttribute('class', 'far fa-trash-alt')
+        deleteCategoryButton.appendChild(deleteFAIcon)
+
+        newCategoryListItem.append(deleteCategoryButton)
+
+        categoryListDiv.appendChild(newCategoryListItem)
+      }))
+
+      // Add event listener to the delete button
+      // Delete button will delete category and all cards associated with it.
+      // Create alert to confirm that delete will do the above thing.
+      // After delete, reset the list
+
+      // Add event listener to close that resets the list
+  }
 }

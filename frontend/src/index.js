@@ -20,6 +20,9 @@ function init(){
   // Event listener to create a category
   createCategoryButton.addEventListener('click', Category.handleCreateCategoryClick )
 
+  const manageCategoriesLink = document.querySelector('#manage-categories-link')
+  manageCategoriesLink.addEventListener('click', Category.handleManageCategoriesClick)
+
   const createCardButton = document.querySelector('#create-card-button')
   // Event listener to create a card
   createCardButton.addEventListener('click', Card.handleCreateCardClick)

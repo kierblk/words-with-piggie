@@ -43,7 +43,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" id="all-categories-link" href="#">All Categories</a>
                 <div class="dropdown-divider"></div>
-                <a class= "dropdown-item" id="manage-categories-link" href="#">Manage Categories</a>
+                <a class= "dropdown-item" id="manage-categories-link" href="#" data-toggle="modal" data-target="#manageCategoryModal">Manage Categories</a>
                 <div class="dropdown-divider"></div>
               </div>
             </li>
@@ -237,6 +237,31 @@
             </div>
           </div>
           <!-- End New Category Modal-->
+
+          <!-- Start Manage Category Modal -->
+          <div class="modal fade" id="manageCategoryModal" tabindex="-1" role="dialog" aria-labelledby="manageCategoryModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="">Manage Categories</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="category-list" class="text-left">
+                    <ul>
+                      <!-- insert categories here -->
+                    </ul>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Manage Category Modal -->
         </div>
       </div>
     </div>
