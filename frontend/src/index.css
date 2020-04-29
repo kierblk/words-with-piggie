@@ -61,3 +61,7 @@ html {
 div#category-list {
   padding-left: 5rem;
 }
+
+#delete-category-button {
+  margin: 0.5rem;
+}

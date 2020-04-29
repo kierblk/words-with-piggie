@@ -121,6 +121,7 @@ class Category {
 
         const newCategoryListItem = document.createElement('li')
         newCategoryListItem.setAttribute('data-category-id', `${category.attributes.id}`)
+        newCategoryListItem.setAttribute('class', 'form-label-text')
         newCategoryListItem.innerText = `${category.attributes.title}`
 
         const deleteCategoryButton = document.createElement('button')
